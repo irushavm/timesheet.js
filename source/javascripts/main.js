@@ -1,31 +1,38 @@
 /* global Lib, Timesheet */
 
-(function(){
+(function () {
   'use strict';
-  
-  Lib.ready(function() {
-    console.log('ads');
-    
-    /* jshint -W031 */
-    new Timesheet('timesheet-default', 2002, 2013, [
-      ['2002', '09/2002', 'A freaking awesome time', 'lorem'],
-      ['06/2002', '09/2003', 'Some great memories', 'ipsum'],
-      ['2003', 'Had very bad luck'],
-      ['10/2003', '2006', 'At least had fun', 'dolor'],
-      ['02/2005', '05/2006', 'Enjoyed those times as well', 'ipsum'],
-      ['07/2005', '09/2005', 'Bad luck again', 'default'],
-      ['10/2005', '2008', 'For a long time nothing happened', 'dolor'],
-      ['01/2008', '05/2009', 'LOST Season #4', 'lorem'],
-      ['01/2009', '05/2009', 'LOST Season #4', 'sit'],
-      ['02/2010', '05/2010', 'LOST Season #5', 'lorem'],
-      ['09/2008', '06/2010', 'FRINGE #1 & #2', 'ipsum']
-    ]);
 
-    document.querySelector('#switch-dark').addEventListener('click', function() {
+  Lib.ready(function () {
+
+    var TS = new Timesheet({
+      theme: 'default',
+      targetId: 'timesheet-default',
+      showDates: true,
+      labelsBelow: true,
+      padYears: 2,
+      events: [
+        { begin: '2002', end: '09/2002', label: 'A freaking awesome time', className: 'lorem' },
+        { begin: '06/2002', end: '09/2003', label: 'Some great memories', className: 'ipsum' },
+        { begin: '2003', label: 'Had very bad luck' },
+        { begin: '10/2003', end: '2006', label: 'At least had fun', className: 'dolor' },
+        { begin: '02/2005', end: '05/2006', label: 'Enjoyed those times as well', className: 'ipsum' },
+        { begin: '07/2005', end: '09/2005', label: 'Bad luck again', className: 'default' },
+        { begin: '10/2005', end: '2008', label: 'For a long time nothing happened', className: 'dolor' },
+        { begin: '01/2008', end: '05/2009', label: 'LOST Season #4', className: 'lorem' },
+        { begin: '01/2009', end: '05/2009', label: 'LOST Season #4', className: 'sit' },
+        { begin: '02/2010', end: '05/2010', label: 'LOST Season #5', className: 'lorem' },
+        { begin: '09/2008', end: '06/2010', label: 'FRINGE #1 & #2', className: 'ipsum' }
+      ]
+    });
+
+    TS.render();
+
+    document.querySelector('#switch-dark').addEventListener('click', function () {
       document.querySelector('body').className = 'index black';
     });
 
-    document.querySelector('#switch-light').addEventListener('click', function() {
+    document.querySelector('#switch-light').addEventListener('click', function () {
       document.querySelector('body').className = 'index white';
     });
   });
